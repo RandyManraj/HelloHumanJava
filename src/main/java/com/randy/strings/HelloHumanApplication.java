@@ -14,17 +14,15 @@ public class HelloHumanApplication {
 		SpringApplication.run(HelloHumanApplication.class, args);
 	}
 	
-//	@RequestMapping("/search")
-//    public String indexsearch(){
-//        return "This is not a search";
-//	}
-	@RequestMapping("{name}")
-    public String index3(@RequestParam(value="name", required=false) String name) {
-		if(name == null) {
-			System.out.println(name);
+	@RequestMapping("/")
+    public String index3(@RequestParam(value="name",defaultValue = "666") String name, @RequestParam(value="last", defaultValue = "777") String lastName) {
+		System.out.println(name + lastName + "String Here");
+		if(name.equals("666") && lastName.equals("777")) {
+			System.out.println(name + lastName + "nothing");
 			return " Hello Human!";
-		}else
-			System.out.println(name);
-        return "Hello \n" + name + "\n Welcome to SpringBoot!";
+		}
+		else
+			System.out.println(name + lastName);
+        return "Hello \n" + name + lastName + "\n Welcome to SpringBoot!";
 	}
 }
